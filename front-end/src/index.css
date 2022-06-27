@@ -1,13 +1,76 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Import the Krona One font from Google */
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+/*_____Styling Application Structure Components______*/
+/* Create a Paralax Background */
+.Background {
+  padding-bottom: 1%;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(0deg, rgba(28 53 86 / 50%), rgba(28 53 86 / 50%)), url(/*REPLACE NEEDED*/);
+  /*Paralax*/
+  /* Set a specific height */
+  min-height: 250px;
+  
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.Main{
+  border-radius: 25px;
+  background-color: white;
+  color: #1c3556;
+  justify-content: center;
+  text-align: center;
+  padding: 5%;
+  transition: all 1s ease;
+  transform-style: preserve-3d;
 }
+
+/* Adding a 'reveal on scroll' effect to components*/
+.reveal{
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.reveal.active{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/*_____Styling Individual Components______*/
+/* Creating a spinning logo */
+.Logo{
+  height: 25vmax;
+  align-content: center;
+  transition: all 2s ease;
+  transform-style: preserve-3d;
+}
+
+.Logo:hover{
+  transform: rotateY(360deg);
+}
+
+/*_____Styling Individual Elements______*/
+/* Set headers to use the Krona One font */
+h1, h2, h3, h4, h5, h6 {
+  color: #1c3556;
+  font-family: 'Krona One', sans-serif;
+}
+
+/* Non-headers should use sans-serif*/
+p, table, tr, label, input{
+  font-family: sans-serif;
+  font-size: 1.0vmax;
+}
+
+/* Set font sizes to be consistent across the application */
+h1{font-size: 2.5vmax;}
+h2{font-size: 2.25vmax;}
+h3{font-size: 2.0vmax;}
+h4{font-size: 1.75vmax;}
