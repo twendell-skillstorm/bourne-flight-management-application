@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { userReducer } from './reducers/userReducer';
+import { userReducer } from './Reducers/userReducer';
 
 // Deprecated, Developers indicating to use redux-toolkit
 const store = createStore(userReducer);

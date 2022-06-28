@@ -7,7 +7,7 @@
   padding-bottom: 1%;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(0deg, rgba(28 53 86 / 50%), rgba(28 53 86 / 50%)), url(/*REPLACE NEEDED*/);
+  background: linear-gradient(0deg, rgba(28 53 86 / 50%), rgba(28 53 86 / 50%)), url('./Images/background-img.png');
   /*Paralax*/
   /* Set a specific height */
   min-height: 250px;
@@ -47,9 +47,10 @@
 /* Creating a spinning logo */
 .Logo{
   height: 25vmax;
-  align-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   transition: all 2s ease;
-  transform-style: preserve-3d;
 }
 
 .Logo:hover{
@@ -61,12 +62,18 @@
 h1, h2, h3, h4, h5, h6 {
   color: #1c3556;
   font-family: 'Krona One', sans-serif;
+  text-align: center;
 }
 
 /* Non-headers should use sans-serif*/
+b {
+  color: #1c3556;
+}
+
 p, table, tr, label, input{
   font-family: sans-serif;
   font-size: 1.0vmax;
+  color: #55657A;
 }
 
 /* Set font sizes to be consistent across the application */

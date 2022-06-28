@@ -12,23 +12,23 @@ const App = () => {
 
     return (
         <>
-            <div>
-               <BrowserRouter>
-                    <Navigation/>
-                    <Routes>
-                        {/* When the URL in the browser becomes /, toggle on the Landing page */}
-                        <Route path="/" element={<Landing />} />
-                        <Route path="/about" element={<About/>}/>
-                        <Route path="/airports" element={<Airports/>}/>
-                        <Route path="/employees" element={<Employees/>}/>
-                        <Route path="/flights" element={<Flights />} />
-                        <Route path="/flight-crew" element={<Flight_Crew />} />
-                        <Route path="/passengers" element={<Passengers />} />
-                        <Route path="*" element={<Error />} />
-                    </Routes>
-                    <Footer/>
-                </BrowserRouter> 
-            </div>
+            <BrowserRouter>
+                <Navigation/>
+                <div className='App'>
+                <Routes>
+                    {/* When the URL in the browser becomes /, toggle on the Landing page */}
+                    <Route path="/" element={<Landing />} />
+                    <Route path="/about" element={<About/>}/>
+                    <Route path="/airports" element={<Airports/>}/>
+                    <Route path="/employees" element={<Employees/>}/>
+                    <Route path="/flights" element={<Flights />} />
+                    <Route path="/flight-crew" element={<Flight_Crew />} />
+                    <Route path="/passengers" element={<Passengers />} />
+                    <Route path="*" element={<Error />} />
+                </Routes>
+                </div>
+                <Footer/>
+            </BrowserRouter> 
         </>   
     );   
 }

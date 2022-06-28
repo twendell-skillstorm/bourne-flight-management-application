@@ -1,0 +1,40 @@
+.Footer {
+    width: 100%;
+    background-color: rgba(28, 53, 86, 80%);
+    padding: 2%;
+    left: 0;
+    bottom: 0;
+}
+
+.Icons{
+    width:4vmax;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 2s ease;
+}
+
+.Icons:hover{
+    transform: rotateY(360deg);
+    
+}
+
+.List_Header{
+    color: #A8DBDD;
+}
+
+.Link{
+    display: block;
+    color: #A8DBDD;
+    text-decoration: none;
+    padding-top: 1%;
+    font-family: sans-serif;
+}
+
+a:hover{
+    color: #F1FBEF;
+}
+
+hr {
+    color: #1C3556;
+}

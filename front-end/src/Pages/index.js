@@ -1,6 +1,7 @@
 export * from './About';
 export * from './Airports';
 export * from './Employees';
+export * from './Error';
 export * from './Flight_Crew';
 export * from './Flights';
 export * from './Landing';

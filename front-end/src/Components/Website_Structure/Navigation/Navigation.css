@@ -1,0 +1,47 @@
+.Navigation ul {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    background-color: rgba(28, 53, 86, 80%);
+  }
+  
+.Navigation li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: #A8DBDD;
+    text-align: center;
+    font-family: 'Krona One';
+    text-decoration: none;
+}
+
+.noHover{
+    padding-top: 4.5%;
+    color: #A8DBDD;
+}
+
+.Hover{
+    padding: 1vmax 1.5vmax;
+}
+
+.Hover:hover {
+    background-color: #E73947;
+    color: #F1FBEF;
+}
+
+.Icon{
+    width:7.5vmax;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 2s ease;
+}
+
+.Icon:hover{
+    transform: rotateY(360deg);
+}
+
+  
+  

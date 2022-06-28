@@ -1,0 +1,21 @@
+.button-md{
+    font-size: 2vmax;
+    padding: 1%;
+}
+
+.button{
+    background-color: #1c3556;
+    color: #A8DBDD;
+    border: none;
+    border-radius: 20px;
+}
+
+.button:hover{
+    background-color: #E73947;
+    color: #F1FBEF;
+}
+
+.button-sm{
+    font-size: 1.5vmax;
+    padding: 2%;
+}

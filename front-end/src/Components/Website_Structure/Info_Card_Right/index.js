@@ -1,0 +1,1 @@
+export * from './Info_Card_Right';
