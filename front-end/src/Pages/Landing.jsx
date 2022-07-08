@@ -1,11 +1,17 @@
 import { useRef, useState } from "react";
 import {Three_Column_Card} from "../Components/Website_Structure/3_Column_Card/3_Column_Card";
-import { Button } from '../Components/Website_Structure/Button';
 import { Info_Card_Left } from '../Components/Website_Structure/Info_Card_Left';
 import { Info_Card_Right } from '../Components/Website_Structure/Info_Card_Right';
 
 import bourneLogo from '../Images/logo.png';
-import placeholder from '../Images/placeholder.png';
+import airport from '../Images/airport.png';
+import employee from '../Images/employee.png';
+import flight from '../Images/flight.png';
+import flightCrew from '../Images/flightCrew.png';
+import passenger from '../Images/passenger.png';
+import quick from '../Images/quick.png';
+import organize from '../Images/organize.png';
+import centralize from '../Images/centralize.png';
 
 export const Landing = () => {
 
@@ -44,66 +50,67 @@ export const Landing = () => {
             
             <div>
                 {/* Hero Statement*/}
-                <h1>quisque id diam vel quam elementum pulvinar etiam non quam</h1>
+                <h1 style={{"padding-left": "7%", "padding-right": "7", "padding-top": "2%"}}>Providing quick and easy access for <br/>flight managers.</h1>
                     {/* App Description */}
-                    <p><b>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placerat in egestas erat imperdiet sed euismod nisi porta lorem.</b></p>
+                    <p style={{"padding-left": "5%", "padding-right": "5%", "padding-top": "2%"}}><b style={{color:"white"}}>Bourne Flight Management Systems (BFMS) is a web application that provides CRUD (Create, Read, Update, and Delete) operations <br/>for managing airline services. BFMS provides CRUD operations for interacting with airports, employees, flights, flight crews, and passengers.</b></p>
                     <br></br><br></br>
             </div>
             
-            <div>
+        <div className="Main">
+                <div>
                 {/* Features Header */}
                 <h2>Features</h2>
 
                 {/* Airport Info Card*/}
                     <Info_Card_Right header="Airport Management" 
-                    para1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate mi sit amet. Sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Volutpat maecenas volutpat blandit aliquam etiam. Dictum varius duis at consectetur lorem. Tellus orci ac auctor augue mauris augue neque gravida in. Risus nec feugiat in fermentum posuere urna nec tincidunt. Proin nibh nisl condimentum id venenatis a. Consequat semper viverra nam libero justo laoreet sit amet. Id interdum velit laoreet id donec ultrices. Id donec ultrices tincidunt arcu non sodales. Elit ut aliquam purus sit amet luctus venenatis lectus."
-                    para2="Feugiat nibh sed pulvinar proin gravida hendrerit. Egestas dui id ornare arcu odio ut sem nulla pharetra. Sed adipiscing diam donec adipiscing. Id velit ut tortor pretium. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus. Aliquet enim tortor at auctor urna nunc id cursus metus. Nisi lacus sed viverra tellus in hac habitasse platea dictumst. Senectus et netus et malesuada fames. At varius vel pharetra vel turpis nunc eget. Et netus et malesuada fames ac turpis egestas. Id eu nisl nunc mi ipsum faucibus vitae aliquet. Amet risus nullam eget felis eget nunc lobortis mattis aliquam. Aliquet bibendum enim facilisis gravida neque convallis."
-                    imageAlt="Placeholder image"
-                    handleClick={goToAirports} image={placeholder}/>
-
+                    para1="Create, read, update, and delete airports from a single webpage. Airport listings update in real time to reflect a current and accurate depiction of your airport entries. Each airport can be mapped to a specific city, state, and country and has its own associated supported airlines. Search for airports by its supported airline or by country to narrow down your options."
+                    para2="Required Information: Airport Name, City, State, Country, Supported Airlines, and Terminals"
+                    imageAlt="Airport Terminal"
+                    handleClick={goToAirports} image={airport}/>
+                    <br/>
                 {/* Employee Info Card */}
                     <Info_Card_Left header="Employee Management" 
-                    para1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate mi sit amet. Sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Volutpat maecenas volutpat blandit aliquam etiam. Dictum varius duis at consectetur lorem. Tellus orci ac auctor augue mauris augue neque gravida in. Risus nec feugiat in fermentum posuere urna nec tincidunt. Proin nibh nisl condimentum id venenatis a. Consequat semper viverra nam libero justo laoreet sit amet. Id interdum velit laoreet id donec ultrices. Id donec ultrices tincidunt arcu non sodales. Elit ut aliquam purus sit amet luctus venenatis lectus."
-                    para2="Feugiat nibh sed pulvinar proin gravida hendrerit. Egestas dui id ornare arcu odio ut sem nulla pharetra. Sed adipiscing diam donec adipiscing. Id velit ut tortor pretium. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus. Aliquet enim tortor at auctor urna nunc id cursus metus. Nisi lacus sed viverra tellus in hac habitasse platea dictumst. Senectus et netus et malesuada fames. At varius vel pharetra vel turpis nunc eget. Et netus et malesuada fames ac turpis egestas. Id eu nisl nunc mi ipsum faucibus vitae aliquet. Amet risus nullam eget felis eget nunc lobortis mattis aliquam. Aliquet bibendum enim facilisis gravida neque convallis."
+                    para1="Create, read, update, and delete employees from a single webpage. Employee listings update in real time to reflect a current and accurate depiction of your employee entries.  Search for employees by last names or occupations."
+                    para2="Required Information: First Name, Last Name, Date of Birth, and Occupation"
                     imageAlt="Placeholder image"
-                    handleClick={goToEmployees} image={placeholder}/>
-
+                    handleClick={goToEmployees} image={employee}/>
+                    <br/>
                 {/* Flight Info Card */}
                     <Info_Card_Right header="Flight Management" 
-                    para1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate mi sit amet. Sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Volutpat maecenas volutpat blandit aliquam etiam. Dictum varius duis at consectetur lorem. Tellus orci ac auctor augue mauris augue neque gravida in. Risus nec feugiat in fermentum posuere urna nec tincidunt. Proin nibh nisl condimentum id venenatis a. Consequat semper viverra nam libero justo laoreet sit amet. Id interdum velit laoreet id donec ultrices. Id donec ultrices tincidunt arcu non sodales. Elit ut aliquam purus sit amet luctus venenatis lectus."
-                    para2="Feugiat nibh sed pulvinar proin gravida hendrerit. Egestas dui id ornare arcu odio ut sem nulla pharetra. Sed adipiscing diam donec adipiscing. Id velit ut tortor pretium. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus. Aliquet enim tortor at auctor urna nunc id cursus metus. Nisi lacus sed viverra tellus in hac habitasse platea dictumst. Senectus et netus et malesuada fames. At varius vel pharetra vel turpis nunc eget. Et netus et malesuada fames ac turpis egestas. Id eu nisl nunc mi ipsum faucibus vitae aliquet. Amet risus nullam eget felis eget nunc lobortis mattis aliquam. Aliquet bibendum enim facilisis gravida neque convallis."
+                    para1="Create, read, update, and delete flights from a single webpage. Flight listings update in real time to reflect a current and accurate depiction of your flight entries. Each flight can be mapped to a specific city, state, and country and has its own associated supported airlines. Search for flights by its supported airline or by country to narrow down your options."
+                    para2="Required Information: Flight Number, Departures: Airport, Terminal, Date & Time, Arrivals: Airport, Terminals, Date & Time, Flight Crew, Max Passengers, and Passengers"
                     imageAlt="Placeholder image"
-                    handleClick={goToFlights} image={placeholder}/>
-
+                    handleClick={goToFlights} image={flight}/>
+                    <br/>
                 {/* Flight Crew Info Card */}
                     <Info_Card_Left header="Flight Crew Management" 
-                    para1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate mi sit amet. Sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Volutpat maecenas volutpat blandit aliquam etiam. Dictum varius duis at consectetur lorem. Tellus orci ac auctor augue mauris augue neque gravida in. Risus nec feugiat in fermentum posuere urna nec tincidunt. Proin nibh nisl condimentum id venenatis a. Consequat semper viverra nam libero justo laoreet sit amet. Id interdum velit laoreet id donec ultrices. Id donec ultrices tincidunt arcu non sodales. Elit ut aliquam purus sit amet luctus venenatis lectus."
-                    para2="Feugiat nibh sed pulvinar proin gravida hendrerit. Egestas dui id ornare arcu odio ut sem nulla pharetra. Sed adipiscing diam donec adipiscing. Id velit ut tortor pretium. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus. Aliquet enim tortor at auctor urna nunc id cursus metus. Nisi lacus sed viverra tellus in hac habitasse platea dictumst. Senectus et netus et malesuada fames. At varius vel pharetra vel turpis nunc eget. Et netus et malesuada fames ac turpis egestas. Id eu nisl nunc mi ipsum faucibus vitae aliquet. Amet risus nullam eget felis eget nunc lobortis mattis aliquam. Aliquet bibendum enim facilisis gravida neque convallis."
+                    para1="Create, read, update, and delete flight crews from a single webpage. Flight listings update in real time to reflect a current and accurate depiction of your flight crew entries. Each flight crew can be mapped to a specific airline. Search for flight crews by airline to narrow down your options."
+                    para2="Required Information: Team Number, Captain, First Officer, Second Officer, Flight Engineer, Navigator, Purser, Flight Attendants, Load Master, and Flight Medic"
                     imageAlt="Placeholder image"
-                    handleClick={goToFlightCrew} image={placeholder}/>
-
+                    handleClick={goToFlightCrew} image={flightCrew}/>
+                    <br/>
                 {/* Passengers Info Card */}
                     <Info_Card_Right header="Passenger Management" 
-                    para1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate mi sit amet. Sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Volutpat maecenas volutpat blandit aliquam etiam. Dictum varius duis at consectetur lorem. Tellus orci ac auctor augue mauris augue neque gravida in. Risus nec feugiat in fermentum posuere urna nec tincidunt. Proin nibh nisl condimentum id venenatis a. Consequat semper viverra nam libero justo laoreet sit amet. Id interdum velit laoreet id donec ultrices. Id donec ultrices tincidunt arcu non sodales. Elit ut aliquam purus sit amet luctus venenatis lectus."
-                    para2="Feugiat nibh sed pulvinar proin gravida hendrerit. Egestas dui id ornare arcu odio ut sem nulla pharetra. Sed adipiscing diam donec adipiscing. Id velit ut tortor pretium. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus. Aliquet enim tortor at auctor urna nunc id cursus metus. Nisi lacus sed viverra tellus in hac habitasse platea dictumst. Senectus et netus et malesuada fames. At varius vel pharetra vel turpis nunc eget. Et netus et malesuada fames ac turpis egestas. Id eu nisl nunc mi ipsum faucibus vitae aliquet. Amet risus nullam eget felis eget nunc lobortis mattis aliquam. Aliquet bibendum enim facilisis gravida neque convallis."
+                    para1="Create, read, update, and delete passengers from a single webpage. Passenger listings update in real time to reflect a current and accurate depiction of your passenger entries. Search for passengers by last names."
+                    para2="Required Information: First Name, Last Name, Date of Birth, and Requires Assistance"
                     imageAlt="Placeholder image"
-                    handleClick={goToPassengers} image={placeholder}/>
-
+                    handleClick={goToPassengers} image={passenger}/>
             </div>
+
+            <br/><br/>
 
             <div>
                 {/* Benefits Header */}
                 <h2>Benefits</h2>
                     {/* 3-Column Description */}
-                    <Three_Column_Card image1={placeholder} image2={placeholder} image3={placeholder}
+                    <Three_Column_Card image1={quick} image2={organize} image3={centralize}
                     imageAlt1="Placeholder image" imageAlt2="Placeholder image" imageAlt3="Placeholder image"
-                    head1="Header 1" head2="Header 2" head3="Header 3"
-                    par1="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi tempus imperdiet nulla malesuada pellentesque elit eget gravida cum."
-                    par2="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi tempus imperdiet nulla malesuada pellentesque elit eget gravida cum."
-                    par3="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi tempus imperdiet nulla malesuada pellentesque elit eget gravida cum."/>
-                    
+                    head1="Quick Transactions" head2="Organized Information" head3="Centralized Access"
+                    par1="Interactive with flight information in real time with no delay."
+                    par2="Organize flight information by airports, employees, flights, flight crews, and passengers. Use searching and sorting to find information quick and easy."
+                    par3="Access flight information all in one place. Each category can be created, read, updated, and deleted all on one page."/>
             </div>
-
+        </div>
         </>
         
     );

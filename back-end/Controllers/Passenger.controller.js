@@ -17,24 +17,20 @@ const createPassenger = async ({firstName, lastName, birthday, requireAssistance
     }
 }
 
-// Update Passenger Entry
-const updatePassenger = async (_id, {firstName, lastName, birthday, requireAssistance}) => {
+const updatePassenger = async (id, updatedPassenger) => {
     try {
-        await Passenger.findByIdAndUpdate(_id, {$push: {firstName, lastName, birthday, requireAssistance}})
-    } catch (err){
+        const passenger = await Passenger.findByIdAndUpdate({_id: id}, updatedPassenger, {new: true});
+        return passenger;
+    } catch (err) {
         console.error(err);
-        throw {status: 400, message: err};
+        throw { status: 404, message: err }; // Akin to rejecting a Promise
     }
 }
 
-// Delete Passenger Entry
-const deletePassenger = async (_id) => {
-    try {
-        await Passenger.findByIdAndDelete(_id);    
-    } catch (err){
-        console.error(err);
-        throw {status: 400, message: err};
-    }
+const deletePassenger = async id => {
+    console.log(`try to delete ${id}`);
+    const passengers = await Passenger.findByIdAndRemove(id);
+    return passengers;
 }
 
 const findAllPassengers = async () => {
@@ -52,4 +48,20 @@ const findAllPassengers = async () => {
         throw {status: 400, message: err};
     }
 }
-module.exports = {createPassenger, updatePassenger, deletePassenger, findAllPassengers};
+
+const findPassengerByID = async id => {
+    try {
+        console.log(`Got ID: ${id}`);
+        // If no passenger is found, this does NOT return a rejected promise. Instead null is returned
+        const passenger = await Passenger.findById(id);
+        if (passenger == null) {
+            throw `No passenger with the id of ${id} found.`;
+        }
+        return passenger; // Passenger was found and we return it
+    } catch (err) {
+        console.error(err);
+        throw { status: 404, message: err }; // Akin to rejecting a Promise
+    }
+}
+
+module.exports = {findPassengerByID, createPassenger, updatePassenger, deletePassenger, findAllPassengers};

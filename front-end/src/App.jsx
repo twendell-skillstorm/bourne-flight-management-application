@@ -12,6 +12,7 @@ const App = () => {
 
     return (
         <>
+            <div className='Background'>
             <BrowserRouter>
                 <Navigation/>
                 <div className='App'>
@@ -29,6 +30,7 @@ const App = () => {
                 </div>
                 <Footer/>
             </BrowserRouter> 
+            </div>
         </>   
     );   
 }

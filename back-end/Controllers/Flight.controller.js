@@ -1,17 +1,15 @@
 const Flight = require('../Models/Flight.model');
 
 // Create New Flight Entry
-const createFlight = async ({airline, flightNumber, departureDateTime, departureAirport, departureTerminal, arrivalDateTime, arrivalAirport, arrivalTerminal, flightcrew, passengerLimit, currentPassengers, passengerList}) => {
+const createFlight = async ({airline, flightNumber, departureDateTime, departureFlight, arrivalDateTime, arrivalFlight, flightcrew, passengerLimit, currentPassengers, passengerList}) => {
     try {
         const flight = new Flight({
             airline, 
             flightNumber, 
             departureDateTime, 
-            departureAirport, 
-            departureTerminal, 
+            departureFlight, 
             arrivalDateTime, 
-            arrivalAirport, 
-            arrivalTerminal, 
+            arrivalFlight, 
             flightcrew, 
             passengerLimit, 
             currentPassengers, 
@@ -25,24 +23,21 @@ const createFlight = async ({airline, flightNumber, departureDateTime, departure
     }
 }
 
-// Update Flight Entry
-const updateFlight = async (_id, {airline, FlightNumber, departureDateTime, departureAirport, departureTerminal, arrivalDateTime, arrivalAirport, arrivalTerminal, flightcrew, passengerLimit, currentPassengers, passengerList}) => {
+const updateFlight = async (id, updatedFlight) => {
     try {
-        await Flight.findByIdAndUpdate(_id, {$push: {airline, FlightNumber, departureDateTime, departureAirport, departureTerminal, arrivalDateTime, arrivalAirport, arrivalTerminal, flightcrew, passengerLimit, currentPassengers, passengerList}})
-    } catch (err){
+        const flight = await Flight.findByIdAndUpdate({_id: id}, updatedFlight, {new: true});
+        return flight;
+    } catch (err) {
         console.error(err);
-        throw {status: 400, message: err};
+        throw { status: 404, message: err }; // Akin to rejecting a Promise
     }
 }
 
 // Delete Flight Entry
-const deleteFlight = async (_id) => {
-    try {
-        await Flight.findByIdAndDelete(_id);
-    } catch (err){
-        console.error(err);
-        throw {status: 400, message: err};
-    }
+const deleteFlight = async id => {
+    console.log(`try to delete ${id}`);
+    const flight = await Flight.findByIdAndRemove(id);
+    return flight;
 }
 
 const findFlightByAirline = async (userAirline) => {
@@ -68,26 +63,17 @@ const findFlightByAirline = async (userAirline) => {
     }
 }
 
-const findFlightByID = async (id) => {
+const findFlightByID = async id => {
     try {
-        const flight = await Flight.findById(id, function (err) {
-            if (err){
-                console.log(err);
-            }
-            else{
-                console.log("Flight found");
-            }
-        });
-
-        if (flight === null){
-            console.log(`No flights with the ID: ${id} found`);
-            return `No flights with the ID: ${id} found`;
-        } else {
-            return flight;
+        // If no flight is found, this does NOT return a rejected promise. Instead null is returned
+        const flight = await Flight.findById(id);
+        if (flight == null) {
+            throw `No flight with the id of ${id} found.`;
         }
-    } catch (err){
+        return flight; // Flight was found and we return it
+    } catch (err) {
         console.error(err);
-        throw {status: 400, message: err};
+        throw { status: 404, message: err }; // Akin to rejecting a Promise
     }
 }
 

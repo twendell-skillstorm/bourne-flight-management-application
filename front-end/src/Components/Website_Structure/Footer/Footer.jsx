@@ -5,6 +5,7 @@ import instagram from './instagram.png';
 import linkedin from './linkedin.png';
 
 export const Footer = () => {
+
     return (
         <>
         <div className="Footer">
@@ -35,7 +36,7 @@ export const Footer = () => {
                 <div className="Container">
                     <h5 className="List_Header">Contact Me</h5>
                     <hr></hr>
-                    <div class="d-flex justify-content-between">
+                    <div className="d-flex justify-content-between">
                         <img className="Icons" src={twitter} alt="Twitter Icon"/>
                         <img className="Icons" src={github} alt="GitHub Icon"/>
                         <img className="Icons" src={instagram} alt="Instagram Icon"/>

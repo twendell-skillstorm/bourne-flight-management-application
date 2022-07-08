@@ -8,20 +8,23 @@ export const Three_Column_Card = (props) => {
             <div className="row">
                 <div className="col-sm-4">
                     <img className="Card_Image" src={props.image1} alt={props.imageAlt1}/>
-                    <h4>{props.head1}</h4>
-                    <p>{props.par1}</p>
+                    <br/>
+                    <h4 >{props.head1}</h4>
+                    <p className='Para'>{props.par1}</p>
                 </div>
 
                 <div className="col-sm-4">
                     <img className="Card_Image" src={props.image2} alt={props.imageAlt2}/>
-                    <h4>{props.head2}</h4>
-                    <p>{props.par2}</p>
+                    <br/>
+                    <h4 >{props.head2}</h4>
+                    <p className='Para'>{props.par2}</p>
                 </div>
 
                 <div className="col-sm-4">
                     <img className="Card_Image" src={props.image3} alt={props.imageAlt3}/>
-                    <h4>{props.head3}</h4>
-                    <p>{props.par3}</p>
+                    <br/>
+                    <h4 >{props.head3}</h4>
+                    <p className='Para'>{props.par3}</p>
                 </div>
             </div>
         </div>

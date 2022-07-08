@@ -4,4 +4,14 @@
 
 .Card_Image {
     width: 20vmax;
+    padding: 5%;
+    transition: all 2s ease;
+}
+
+.Card_Image:hover{
+  transform: rotateY(360deg);
+}
+
+.Para {
+    padding: 2%;
 }

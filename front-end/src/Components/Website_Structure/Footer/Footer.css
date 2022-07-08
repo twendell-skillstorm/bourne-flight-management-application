@@ -1,9 +1,11 @@
 .Footer {
     width: 100%;
     background-color: rgba(28, 53, 86, 80%);
+
     padding: 2%;
     left: 0;
     bottom: 0;
+    height: 100%;
 }
 
 .Icons{

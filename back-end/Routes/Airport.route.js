@@ -1,56 +1,53 @@
 const router = require('express').Router();
-const {createAirport, updateAirport, deleteAirport, findAirportByAirline, findAirportByCountry, findAirportByID, findAllAirports} = require('../Controllers/Airport.controller');
+const {createAirport, findAirportByID, findAllAirports, deleteAllAirports, deleteAirportById, updateAirport} = require('../Controllers/Airport.controller');
 
-// Find all airports
+// Find All Airports
 router.get('/', async (req, res) => {
     const airports = await findAllAirports();
     res.json(airports);
 });
 
-// Find an airport with ID
-router.get('/:id', (req, res) => {
-    const airport = await findAirportByID(req.params.id);
-    res.json(airport);
-});
-
-// Find an airport with Airline
-router.get('/:airline', (req, res) => {
-    const airport = await findAirportByAirline(req.params.airline);
-    res.json(airport);
-});
-
-// Find an airport with Country
-router.get('/:country', (req, res) => {
-    const airport = await findAirportByCountry(req.params.country);
-    res.json(airport);
-});
-
-// Update an airport
-router.post('/update/:id', (req, res) =>{
-    try {
-        const airportID = await updateAirport(req.body);
-        res.json({_id: airportId});
-    } catch (err) {
-        res.status(err?.status || 400).json(err);
-    }
-})
-
-// Delete an airport
-router.post('/delete/:id', (req, res) =>{
-    try {
-        const airportID = await deleteAirport(req.body);
-        res.json({_id: airportId});
-    } catch (err) {
-        res.status(err?.status || 400).json(err);
-    }
-})
-
-// Create an airport
+// Create Airport
 router.post('/', async (req, res) => {
     try {
-        const airportID = await createAirport(req.body);
-        res.json({_id: airportId});
+        const airportId = await createAirport(req.body);
+        res.status(201).json({_id: airportId});
     } catch (err) {
+        res.status(err?.status || 500).json(err);
+    }
+});
+
+// Find Airport By ID
+router.get('/:id', async (req, res) => {
+    try {
+        const airport = await findAirportByID(req.params.id);
+        res.json(airport);
+    } catch (err) {
+        res.status(err?.status || 400).json(err);
+    }
+});
+
+// Delete Airports
+router.delete('/', async (req, res) => {
+    const airports = await deleteAllAirports();
+});
+
+// Delete Airport by ID
+router.delete('/:id', async (req, res) => {
+    try {
+        console.log(`try to delete ${req.params.id}`);
+        const airport = await deleteAirportById(req.params.id);
+    } catch (err) {
+        res.status(err?.status || 400).json(err);
+    }
+});
+
+// Update Airport by ID
+router.put('/:id', async (req, res) => {
+    try {
+        const airport = await updateAirport(req.params.id, req.body);
+        res.json(airport);
+    } catch (err){
         res.status(err?.status || 400).json(err);
     }
 });

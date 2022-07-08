@@ -1,7 +1,11 @@
 .Info_Image{
-    width: 30vmax;
+    width: 20vmax;
+    transition: all 2s ease;
 }
 
+.Info_Image:hover{
+  transform: rotateY(360deg);
+}
 .Info {
     margin: 2%;
 }

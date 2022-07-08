@@ -1,50 +1,52 @@
 const router = require('express').Router();
 const {createFlightCrew, updateFlightCrew, deleteFlightCrew, findFlightCrewByAirline, findFlightCrewByID, findAllFlightCrews} = require('../Controllers/FlightCrew.controller');
-
-// Find all flightCrews
+// Find All FlightCrews
 router.get('/', async (req, res) => {
     const flightCrews = await findAllFlightCrews();
     res.json(flightCrews);
 });
 
-// Find an flightCrew with ID
-router.get('/:id', (req, res) => {
-    const flightCrew = await findFlightCrewByID(req.params.id);
-    res.json(flightCrew);
-});
-
-// Find an flightCrew with Airline
-router.get('/:airline', (req, res) => {
-    const flightCrew = await findFlightCrewByAirline(req.params.airline);
-    res.json(flightCrew);
-});
-
-// Update an flightCrew
-router.post('/update/:id', (req, res) =>{
-    try {
-        const flightCrewID = await updateFlightCrew(req.body);
-        res.json({_id: flightCrewId});
-    } catch (err) {
-        res.status(err?.status || 400).json(err);
-    }
-})
-
-// Delete an flightCrew
-router.post('/delete/:id', (req, res) =>{
-    try {
-        const flightCrewID = await deleteFlightCrew(req.body);
-        res.json({_id: flightCrewId});
-    } catch (err) {
-        res.status(err?.status || 400).json(err);
-    }
-})
-
-// Create an flightCrew
+// Create FlightCrew
 router.post('/', async (req, res) => {
     try {
-        const flightCrewID = await createFlightCrew(req.body);
-        res.json({_id: flightCrewId});
+        const flightCrewId = await createFlightCrew(req.body);
+        res.status(201).json({_id: flightCrewId});
     } catch (err) {
+        res.status(err?.status || 500).json(err);
+    }
+});
+
+// Find FlightCrew By ID
+router.get('/:id', async (req, res) => {
+    try {
+        const flightCrew = await findFlightCrewByID(req.params.id);
+        res.json(flightCrew);
+    } catch (err) {
+        res.status(err?.status || 400).json(err);
+    }
+});
+
+// Delete FlightCrews
+router.delete('/', async (req, res) => {
+    const flightCrews = await deleteAllFlightCrews();
+});
+
+// Delete FlightCrew by ID
+router.delete('/:id', async (req, res) => {
+    try {
+        console.log(`try to delete ${req.params.id}`);
+        const flightCrew = await deleteFlightCrew(req.params.id);
+    } catch (err) {
+        res.status(err?.status || 400).json(err);
+    }
+});
+
+// Update FlightCrew by ID
+router.put('/:id', async (req, res) => {
+    try {
+        const flightCrew = await updateFlightCrew(req.params.id, req.body);
+        res.json(flightCrew);
+    } catch (err){
         res.status(err?.status || 400).json(err);
     }
 });

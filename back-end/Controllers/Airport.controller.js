@@ -1,126 +1,60 @@
 const Airport = require('../Models/Airport.model');
 
 // Create New Airport Entry
-const createAirport = async ({name, supportedAirlines, city, state, country, terminals}) => {
+const createAirport = async ({name, city, state, country}) => {
     try {
         const airport = new Airport({
             name,
-            supportedAirlines,
             city,
             state,
             country,
-            terminals
         });
         await airport.save();
-        return flight._id;
+        return airport._id;
     } catch (err){
         console.error(err);
         throw {status: 400, message: err};
     }
 }
 
-// Update Airport Entry
-const updateAirport = async (_id, {name, supportedAirlines, city, state, country, terminals}) => {
+const findAirportByID = async id => {
     try {
-        await Airport.findByIdAndUpdate(_id, {$push: {name, supportedAirlines, city, state, country, terminals}})
-    } catch (err){
-        console.error(err);
-        throw {status: 400, message: err};
-    }
-}
-
-// Delete Airport Entry
-const deleteAirport = async (_id) => {
-    try {
-        await Airport.findByIdAndDelete(_id);    
-    } catch (err){
-        console.error(err);
-        throw {status: 400, message: err};
-    }
-}
-
-const findAirportByAirline = async (airline) => {
-    try {
-        const airports = await Airport.find({ supportedAirlines: airline}, function (err, docs) {
-            if (err){
-                console.log(err);
-            }
-            else{
-                console.log("Airport found");
-            }
-        });
-
-        if (airports === null){
-            console.log(`No airports with the airline: ${airline} found`);
-            return `No airports with the airline: ${airline} found`;
-        } else {
-            return airports;
+        // If no airport is found, this does NOT return a rejected promise. Instead null is returned
+        const airport = await Airport.findById(id);
+        if (airport == null) {
+            throw `No airport with the id of ${id} found.`;
         }
-    } catch (err){
+        return airport; // Airport was found and we return it
+    } catch (err) {
         console.error(err);
-        throw {status: 400, message: err};
+        throw { status: 404, message: err }; // Akin to rejecting a Promise
     }
 }
 
-const findAirportByCountry = async (userCountry) => {
+const findAllAirports = async (limit=0) => {
+    const airports = await Airport.find(); // GET all airports
+    return airports;
+}
+
+const deleteAllAirports = async (limit=0) => {
+    const airports = await Airport.remove({});
+    return airports;
+}
+    
+const deleteAirportById = async id => {
+    console.log(`try to delete ${id}`);
+    const airports = await Airport.findByIdAndRemove(id);
+    return airports;
+}
+
+const updateAirport = async (id, updatedAirport) => {
     try {
-        const airports = await Airport.find({ country: userCountry}, function (err, docs) {
-            if (err){
-                console.log(err);
-            }
-            else{
-                console.log("Airport found");
-            }
-        });
-
-        if (airports === null){
-            console.log(`No airports with the country: ${country} found`);
-            return `No airports with the country: ${country} found`;
-        } else {
-            return airports;
-        }
-    } catch (err){
+        const airport = await Airport.findByIdAndUpdate({_id: id}, updatedAirport, {new: true});
+        return airport;
+    } catch (err) {
         console.error(err);
-        throw {status: 400, message: err};
+        throw { status: 404, message: err }; // Akin to rejecting a Promise
     }
 }
 
-const findAirportByID = async (id) => {
-    try {
-        const airport = await Airport.findById(id, function (err) {
-            if (err){
-                console.log(err);
-            }
-            else{
-                console.log("Airport found");
-            }
-        });
-
-        if (airport === null){
-            console.log(`No airports with the ID: ${id} found`);
-            return `No airports with the ID: ${id} found`;
-        } else {
-            return airport;
-        }
-    } catch (err){
-        console.error(err);
-        throw {status: 400, message: err};
-    }
-}
-
-const findAllAirports = async () => {
-    try {
-        const airports = await Airport.find();
-        if (airports === null){
-            console.log(`No airports found`);
-            return `No airports found`;
-        } else {
-            return airports;
-        }
-        return flights;
-    } catch (err){
-        console.error(err);
-        throw {status: 400, message: err};
-    }
-}
-module.exports = {createAirport, updateAirport, deleteAirport, findAirportByAirline, findAirportByCountry, findAirportByID, findAllAirports};
+module.exports = {createAirport, findAirportByID, findAllAirports, deleteAllAirports, deleteAirportById, updateAirport};

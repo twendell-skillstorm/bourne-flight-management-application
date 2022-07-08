@@ -1,50 +1,53 @@
 const router = require('express').Router();
 const {createFlight, updateFlight, deleteFlight, findFlightByAirline, findFlightByID, findAllFlights} = require('../Controllers/Flight.controller');
 
-// Find all flights
+// Find All Flights
 router.get('/', async (req, res) => {
     const flights = await findAllFlights();
     res.json(flights);
 });
 
-// Find an flight with ID
-router.get('/:id', (req, res) => {
-    const flight = await findFlightByID(req.params.id);
-    res.json(flight);
-});
-
-// Find an flight with Airline
-router.get('/:airline', (req, res) => {
-    const flight = await findFlightByAirline(req.params.airline);
-    res.json(flight);
-});
-
-// Update an flight
-router.post('/update/:id', (req, res) =>{
-    try {
-        const flightID = await updateFlight(req.body);
-        res.json({_id: flightId});
-    } catch (err) {
-        res.status(err?.status || 400).json(err);
-    }
-})
-
-// Delete an flight
-router.post('/delete/:id', (req, res) =>{
-    try {
-        const flightID = await deleteFlight(req.body);
-        res.json({_id: flightId});
-    } catch (err) {
-        res.status(err?.status || 400).json(err);
-    }
-})
-
-// Create an flight
+// Create Flight
 router.post('/', async (req, res) => {
     try {
-        const flightID = await createFlight(req.body);
-        res.json({_id: flightId});
+        const flightId = await createFlight(req.body);
+        res.status(201).json({_id: flightId});
     } catch (err) {
+        res.status(err?.status || 500).json(err);
+    }
+});
+
+// Find Flight By ID
+router.get('/:id', async (req, res) => {
+    try {
+        const flight = await findFlightByID(req.params.id);
+        res.json(flight);
+    } catch (err) {
+        res.status(err?.status || 400).json(err);
+    }
+});
+
+// Delete Flights
+router.delete('/', async (req, res) => {
+    const flights = await deleteAllFlights();
+});
+
+// Delete Flight by ID
+router.delete('/:id', async (req, res) => {
+    try {
+        console.log(`try to delete ${req.params.id}`);
+        const flight = await deleteFlightById(req.params.id);
+    } catch (err) {
+        res.status(err?.status || 400).json(err);
+    }
+});
+
+// Update Flight by ID
+router.put('/:id', async (req, res) => {
+    try {
+        const flight = await updateFlight(req.params.id, req.body);
+        res.json(flight);
+    } catch (err){
         res.status(err?.status || 400).json(err);
     }
 });

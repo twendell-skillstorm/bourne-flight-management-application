@@ -19,25 +19,17 @@ const Schema = mongoose.Schema;
 const flightCrewSchema = new Schema({
     airline: {type:String, required: true},
     teamNumber: {type:Number, required: true},
-    captain: {type:String, required: true},
-    first_officer: {type:String, required: true},
-    second_officer: {type:String, required: true},
-    flight_engineer: {type:String, required: true},
-    navigator: {type:String, required: true},
-    purser: {type:String, required: true},
-    flightAttendants:[
-        {flightAttendant: {
-            firstName: {type:String, required: true},
-            lastName: {type:String, required: true},
-            birthday: {
-                type:Date, 
-                required: true,
-                max: [Date.now, 'Birthday must not be today or in the future.']
-            },
-        }} 
+    captain: {type: String, required: true},
+    first_officer: {type: String, required: true},
+    second_officer: {type: String, required: true},
+    flight_engineer: {type: String, required: true},
+    navigator: {type: String, required: true},
+    purser: {type: String, required: true},
+    flight_attendants:[
+        {type: String, required: true}
     ],
-    loadMaster: {type:String, required: true},
-    flight_medic: {type:String, required: true}
+    load_master: {type: String, required: true},
+    flight_medic: {type: String, required: true}
 });
 
 const FlightCrew = mongoose.model('FlightCrew', flightCrewSchema, 'FlightCrews');
